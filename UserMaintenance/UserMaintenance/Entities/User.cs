@@ -8,16 +8,12 @@ namespace UserMaintenance.Entities
 {
     public class User
     {
+        public override string ToString()
+        {
+            return ID + " " + FullName;
+        }
+        
         public Guid ID { get; set; } = Guid.NewGuid();
         public string FullName { get; set; }
-
-        // Ugyanaz a FullName property kompaktabb formában is írható
-        /*
-        public string FullName
-            => string.Format(
-                "{0} {1}",
-                LastName,
-                FirstName);
-        */
     }
 }
