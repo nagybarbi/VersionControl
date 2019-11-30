@@ -24,6 +24,7 @@ namespace UserMaintenance
             label1.Text = Resource.FullName; // label1
             button1.Text = Resource.Add; // button1
             button2.Text = Resource.WriteToFile;
+            button3.Text = Resource.Delete;
 
             listBox1.DataSource = users;
             listBox1.ValueMember = "ID";
@@ -37,6 +38,9 @@ namespace UserMaintenance
                 FullName = textBox1.Text,
             };
             users.Add(u);
+
+            textBox1.Clear();
+            textBox1.Focus();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -55,6 +59,19 @@ namespace UserMaintenance
                     foreach (object o in users)
                         sw.WriteLine(o.ToString());
                     sw.Close();
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Guid tmp = ((User)listBox1.SelectedItem).ID;
+            foreach (object o in users)
+            {
+                if (tmp.Equals(((User)o).ID))
+                {
+                    users.Remove((User)o);
+                    break;
                 }
             }
         }
